@@ -21,7 +21,7 @@ void mysh_parse_command(const char* command,
 	if(!(check = strpbrk(command, key)))
 		strncpy(buffer, command, strlen(command));
 	else{
-		if(check == strlen(command)-1)
+		if(*check == strlen(command)-1)
 			strncpy(buffer, command, strlen(command)-1);
 		else
 			strncpy(buffer, command, strlen(command));
@@ -34,7 +34,7 @@ void mysh_parse_command(const char* command,
 	while(token != NULL && flag != 1){
 		
 		strcpy(parser[*argc], token);
-		printf("strlen: %d\n", strlen(parser[*argc]));
+		printf("strlen: %ld\n", strlen(parser[*argc]));
 		printf("2%s\n", parser[*argc]);
 		(*argc)++;
 
@@ -49,10 +49,10 @@ void mysh_parse_command(const char* command,
 	}
 	else
 		for(i = 0; i < *argc; i++){
-		(*argv)[i] = (char*)malloc(strlen(parser[i])*sizeof(char*);
+		(*argv)[i] = (char*)malloc(strlen(parser[i])*sizeof(char*));
 		strcpy((*argv)[i], parser[i]);
 		printf("3argv[%d]: %s\n", i, (*argv)[i]);
-		}
+		};
 
 	printf("4argc: %d\n", *argc);
 	
